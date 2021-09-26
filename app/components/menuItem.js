@@ -8,7 +8,7 @@ const MenuItem = (props) => {
         <View style={menuItemStyle.container}>
             <View style={{ flexDirection: 'row' }}>
                 <Image source={{ uri: item.image }} style={menuItemStyle.image} />
-                <Text>{item.price}</Text>
+                <Text>${item.price}</Text>
             </View>
             <Text>{item.title}</Text>
             <Text>{item.description}</Text>
