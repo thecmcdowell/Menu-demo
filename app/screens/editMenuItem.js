@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Button, Alert, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import { View, Button, Alert, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { launchImageLibrary } from 'react-native-image-picker';
 import { useDispatch } from "react-redux";
 import { addMenuItem, deleteMenuItem, updateMenuItem } from '../state/menuActions'
 

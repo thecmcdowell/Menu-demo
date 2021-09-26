@@ -20,8 +20,6 @@ const menuReducer = (state = initState, action) => {
                 menu: updatedMenu
             }
         case types.DELETE_MENU_ITEM:
-            console.log('createed', action)
-
             let deleteMenuItem = state.menu.filter((item) => item.id !== action.payload.id
             )
             return {

@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Edit item screen tests should display template for new item  1`] = `
+<View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "opacity": 1,
+      }
+    }
+  >
+    <Image
+      source={
+        Object {
+          "uri": "https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg",
+        }
+      }
+      style={
+        Object {
+          "height": 150,
+          "width": 150,
+        }
+      }
+    />
+  </View>
+  <TextInput
+    onChangeText={[Function]}
+    placeholder="title"
+    style={
+      Object {
+        "borderWidth": 1,
+        "height": 40,
+        "margin": 12,
+        "padding": 10,
+      }
+    }
+    value=""
+  />
+  <TextInput
+    onChangeText={[Function]}
+    placeholder="description"
+    style={
+      Object {
+        "borderWidth": 1,
+        "height": 40,
+        "margin": 12,
+        "padding": 10,
+      }
+    }
+    value=""
+  />
+  <TextInput
+    keyboardType="number-pad"
+    onChangeText={[Function]}
+    placeholder="price"
+    style={
+      Object {
+        "borderWidth": 1,
+        "height": 40,
+        "margin": 12,
+        "padding": 10,
+      }
+    }
+    value=""
+  />
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      Object {
+        "disabled": true,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {},
+          Object {},
+        ]
+      }
+    >
+      <Text
+        disabled={true}
+        style={
+          Array [
+            Object {
+              "color": "#007AFF",
+              "fontSize": 18,
+              "margin": 8,
+              "textAlign": "center",
+            },
+            Object {
+              "color": "#cdcdcd",
+            },
+          ]
+        }
+      >
+        Create Item
+      </Text>
+    </View>
+  </View>
+</View>
+`;
