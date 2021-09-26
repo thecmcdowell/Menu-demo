@@ -25,7 +25,7 @@ const EditItem = ({ route, navigation }) => {
             [
                 {
                     text: 'Delete', onPress: () => {
-                        dispatch(deleteMenuItem(item))
+                        dispatch(deleteMenuItem(item.item))
                         navigation.goBack()
                     }, style: 'destructive'
                 },
@@ -36,7 +36,7 @@ const EditItem = ({ route, navigation }) => {
 
     const creationHandler = () => {
         const newMenuItem = {
-            id: Math.random,
+            id: Math.random(),
             title: title,
             price: `$${price}`,
             description: description,

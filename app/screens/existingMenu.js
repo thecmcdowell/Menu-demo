@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer } from 'react'
 import { View, FlatList, Button, TouchableOpacity, Text } from 'react-native'
 import { useSelector } from "react-redux";
 import MenuItem from '../components/menuItem'
@@ -8,6 +8,8 @@ import { useNavigation } from '@react-navigation/native';
 const ExisitingMenu = () => {
     const navigation = useNavigation();
     const menu = useSelector((state) => state.menu)
+    const state = useSelector((state) => state)
+    console.log('state', state)
     return (
         <View style={{ height: '100%', alignItems: 'center' }}>
             {menu.length !== 0 ? (
