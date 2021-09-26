@@ -1,6 +1,15 @@
 import menuReducer from '../../app/state/menuReducers'
 
 describe('tests menu reducers', () => {
+    it('should return default state', () => {
+        const initState = {
+            menu: []
+        }
+        const input = {
+            type: ''
+        }
+        expect(menuReducer(initState, input)).toEqual(initState)
+    })
     it('should create a new menu item', () => {
         const input = {
             type: 'CREATE_MENU_ITEM',
