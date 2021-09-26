@@ -12,6 +12,10 @@ const ExisitingMenu = () => {
     console.log('state', state)
     return (
         <View style={{ height: '100%', alignItems: 'center' }}>
+            <Button
+                onPress={() => navigation.navigate('Edit', null)}
+                title="Add Menu Item"
+            />
             {menu.length !== 0 ? (
                 <FlatList
                     data={menu}
@@ -25,10 +29,7 @@ const ExisitingMenu = () => {
             ) :
                 <Text>you have no menu items. Add some? </Text>
             }
-            <Button
-                onPress={() => navigation.navigate('Edit', null)}
-                title="Add Menu Item"
-            />
+
 
         </View>
     )

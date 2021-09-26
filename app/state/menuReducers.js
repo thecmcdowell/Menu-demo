@@ -3,7 +3,7 @@ const initState = {
     menu: [
         {
             id: 1,
-            image: '',
+            image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg',
             title: 'Taco',
             description: 'its NOT sushi?',
             price: '$5.99'
