@@ -1,10 +1,19 @@
-import React from 'react'
-import { View, Text, Button, Alert } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, Button, Alert, TextInput, StyleSheet } from 'react-native'
 import dumbyMenuItems from '../state/dumbyMenuItems'
 
 const EditItem = ({ route, navigation }) => {
-
+    const [price, setPrice] = useState('')
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
     const item = route.params
+    useEffect(() => {
+        if (item) {
+            setPrice(item.item.price)
+            setTitle(item.item.title)
+            setDescription(item.item.description)
+        }
+    }, [])
 
     const deleteHandler = () => {
         Alert.alert(
@@ -15,6 +24,7 @@ const EditItem = ({ route, navigation }) => {
                     text: 'Delete', onPress: () => {
                         let index = dumbyMenuItems.findIndex((currentItem) => currentItem.id === item.item.id)
                         dumbyMenuItems.splice(index, 1)
+                        navigation.goBack()
                     }, style: 'destructive'
                 },
                 { text: 'Cancel' }
@@ -22,22 +32,68 @@ const EditItem = ({ route, navigation }) => {
         )
     }
 
+    const creationHandler = () => {
+        const newMenuItem = {
+            id: Math.random,
+            title: title,
+            price: `$${price}`,
+            description: description,
+            image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg'
+        }
+        dumbyMenuItems.push(newMenuItem)
+        navigation.goBack()
+
+    }
+
+    const updateHandler = () => {
+        const updatedMenuItem = {
+            id: item.id,
+            title: title,
+            price: `$${price}`,
+            description: description,
+            image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg'
+        }
+        let index = dumbyMenuItems.findIndex((currentItem) => currentItem.id === item.item.id)
+        dumbyMenuItems[index] = updatedMenuItem
+        navigation.goBack()
+
+    }
+
     return (
         <View>
             <Text>{item ? 'Edit Item' : 'New Item'}</Text>
-
-            {item ? <Button
-                title="Delete"
-                color="red"
-                onPress={() => deleteHandler()}
-            /> :
+            <TextInput value={title} style={styles.input} placeholder={title} onChangeText={setTitle} placeholder='title' />
+            <TextInput value={description} style={styles.input} onChangeText={setDescription} placeholder='description' />
+            <TextInput value={price} style={styles.input} onChangeText={setPrice} placeholder='price' />
+            {item ?
+                <>
+                    <Button
+                        title="Update"
+                        onPress={() => updateHandler()}
+                    />
+                    <Button
+                        title="Delete"
+                        color="red"
+                        onPress={() => deleteHandler()}
+                    />
+                </>
+                :
                 <Button
                     title="Create Item"
-                    onPress={() => console.log('handle new item func')}
+                    onPress={() => creationHandler()}
                 />
             }
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    input: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+    },
+});
 
 export default EditItem
