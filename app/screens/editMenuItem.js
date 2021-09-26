@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Button, Alert, TextInput, StyleSheet } from 'react-native'
-import dumbyMenuItems from '../state/dumbyMenuItems'
+import { useDispatch } from "react-redux";
+import { addMenuItem, deleteMenuItem, updateMenuItem } from '../state/menuActions'
 
 const EditItem = ({ route, navigation }) => {
     const [price, setPrice] = useState('')
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const dispatch = useDispatch()
+
     const item = route.params
     useEffect(() => {
         if (item) {
@@ -22,8 +25,7 @@ const EditItem = ({ route, navigation }) => {
             [
                 {
                     text: 'Delete', onPress: () => {
-                        let index = dumbyMenuItems.findIndex((currentItem) => currentItem.id === item.item.id)
-                        dumbyMenuItems.splice(index, 1)
+                        dispatch(deleteMenuItem(item))
                         navigation.goBack()
                     }, style: 'destructive'
                 },
@@ -40,23 +42,21 @@ const EditItem = ({ route, navigation }) => {
             description: description,
             image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg'
         }
-        dumbyMenuItems.push(newMenuItem)
+        dispatch(addMenuItem(newMenuItem))
         navigation.goBack()
-
     }
 
     const updateHandler = () => {
         const updatedMenuItem = {
-            id: item.id,
+            id: item.item.id,
             title: title,
             price: `$${price}`,
             description: description,
             image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg'
         }
-        let index = dumbyMenuItems.findIndex((currentItem) => currentItem.id === item.item.id)
-        dumbyMenuItems[index] = updatedMenuItem
-        navigation.goBack()
 
+        dispatch(updateMenuItem(updatedMenuItem))
+        navigation.goBack()
     }
 
     return (
