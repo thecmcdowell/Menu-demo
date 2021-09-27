@@ -1,34 +1,35 @@
-import React from 'react'
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import React from 'react';
+import {View, Text, Image, StyleSheet} from 'react-native';
 
-
-const MenuItem = (props) => {
-    const { item } = props
-    return (
-        <View style={menuItemStyle.container}>
-            <View style={{ flexDirection: 'row' }}>
-                <Image source={{ uri: item.image }} style={menuItemStyle.image} />
-                <Text>${item.price}</Text>
-            </View>
-            <Text>{item.title}</Text>
-            <Text>{item.description}</Text>
-
-        </View>
-    )
-}
+const MenuItem = props => {
+  const {item} = props;
+  return (
+    <View style={menuItemStyle.container}>
+      <View style={{alignItems: 'center'}}>
+        <Image source={{uri: item.image}} style={menuItemStyle.image} />
+        <Text>{item.title}</Text>
+      </View>
+      <View style={{padding: 25}}>
+        <Text>{item.description}</Text>
+        <Text>${item.price}</Text>
+      </View>
+    </View>
+  );
+};
 
 const menuItemStyle = StyleSheet.create({
-    container: {
-        borderWidth: .5,
-        borderRadius: 15,
-        alignItems: 'center',
-        margin: 5,
-        padding: 5
-    },
-    image: {
-        width: 50,
-        height: 50
-    }
-})
+  container: {
+    borderWidth: 0.5,
+    borderRadius: 15,
+    alignItems: 'center',
+    margin: 5,
+    padding: 5,
+    flexDirection: 'row',
+  },
+  image: {
+    width: 150,
+    height: 150,
+  },
+});
 
-export default MenuItem
+export default MenuItem;
