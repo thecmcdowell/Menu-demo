@@ -1,13 +1,14 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 
-const MenuItem = props => {
+
+const MenuItem = (props) => {
     const { item } = props
     return (
         <View style={menuItemStyle.container}>
             <View style={{ flexDirection: 'row' }}>
                 <Image source={{ uri: item.image }} style={menuItemStyle.image} />
-                <Text>{item.price}</Text>
+                <Text>${item.price}</Text>
             </View>
             <Text>{item.title}</Text>
             <Text>{item.description}</Text>

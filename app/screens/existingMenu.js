@@ -1,41 +1,36 @@
-import React from 'react'
-import { View, FlatList } from 'react-native'
+import React, { useReducer } from 'react'
+import { View, FlatList, Button, TouchableOpacity, Text } from 'react-native'
+import { useSelector } from "react-redux";
 import MenuItem from '../components/menuItem'
-
-// just for menuItem dev purposes
-const dumbyItemsArry = [
-    {
-        id: 1,
-        image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg',
-        title: 'Sushi',
-        description: 'its sushi?',
-        price: '$1.99'
-    },
-    {
-        id: 2,
-        image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg',
-        title: 'not Sushi',
-        description: 'its NOT sushi?',
-        price: '$5.99'
-    },
-    {
-        id: 3,
-        image: 'https://www.listchallenges.com/f/items/4a98113a-62e5-444a-82a1-627089b81bbb.jpg',
-        title: 'REALLY NOT Sushi',
-        description: 'its NOT sushi? we promise',
-        price: '$10.99'
-    }
-]
+import { useNavigation } from '@react-navigation/native';
 
 
 const ExisitingMenu = () => {
+    const navigation = useNavigation();
+    const menu = useSelector((state) => state.menu)
+    const state = useSelector((state) => state)
+    console.log('state', state)
     return (
         <View style={{ height: '100%', alignItems: 'center' }}>
-            <FlatList
-                data={dumbyItemsArry}
-                renderItem={MenuItem}
-                keyExtractor={item => item.id}
+            <Button
+                onPress={() => navigation.navigate('Edit', null)}
+                title="Add Menu Item"
             />
+            {menu.length !== 0 ? (
+                <FlatList
+                    data={menu}
+                    renderItem={item =>
+                        <TouchableOpacity onPress={() => navigation.navigate('Edit', { item: item.item })}>
+                            <MenuItem item={item.item} />
+                        </TouchableOpacity>
+                    }
+                    keyExtractor={item => item.id}
+                />
+            ) :
+                <Text>you have no menu items. Add some? </Text>
+            }
+
+
         </View>
     )
 }
